@@ -1,0 +1,4 @@
+[ ] snapping ball to the top 
+[ ] calculate bounds for ramp no matter the orientation (based on gradient)
+[ ] implement curve (includes dynamic collision and measurement of ramp acceleration at given point)
+[ ] function for deployment and arrangement of labels
