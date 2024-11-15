@@ -14,7 +14,7 @@ bool rampCollision(const sf::Vector2f &circlePos, float radius, const sf::Vector
     float t = acDotAb / abLengthSquared;
 
     // Clamp t to be between 0 and 1 to ensure the closest point is within the segment
-    // t = std::max(0.f, std::min(1.f, t));
+    t = std::max(0.f, std::min(1.f, t));
 
     // Find the closest point on the line segment
     sf::Vector2f closestPoint = pointA + t * ab;
