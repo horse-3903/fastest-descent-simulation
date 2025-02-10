@@ -25,7 +25,7 @@ const int WINDOW_HEIGHT_CENTER = floor(SIM_WINDOW_HEIGHT / 2);
 
 const float BALL_RADIUS = 15.f;
 
-const float RAMP_ANGLE = PI / 6;
+const float RAMP_ANGLE = PI / 6; // 30 degrees
 const float RAMP_LENGTH = 1000.f;
 const float RAMP_THICKNESS = 5.f;
 
