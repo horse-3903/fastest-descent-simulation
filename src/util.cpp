@@ -14,7 +14,7 @@ InfoManager::InfoManager(sf::Vector2i position, std::string title)
     }
 }
 
-int InfoManager::AddInfo(std::string label) {
+int InfoManager::addInfo(std::string label) {
     sf::Text newLabel;
     newLabel.setFont(font);
     newLabel.setCharacterSize(TEXT_FONT_SIZE);
@@ -31,24 +31,24 @@ int InfoManager::AddInfo(std::string label) {
     return labels.size() - 1;
 }
 
-void InfoManager::UpdateSize(int width, int height) {
+void InfoManager::updateSize(int width, int height) {
     window.close();
     window.create(sf::VideoMode(width, height), title);
     window.setPosition(position);
 }
 
-void InfoManager::UpdateInfo(int idx, std::string label) {
+void InfoManager::updateInfo(int idx, std::string label) {
     labels[idx].setString(label);
 
     int newWidth = static_cast<int>(labels[idx].getLocalBounds().width);
     if (newWidth > maxWidth) {
         maxWidth = newWidth;
-        std::pair<int, int> dimensions = CalculateSize();
-        UpdateSize(dimensions.first, dimensions.second);
+        std::pair<int, int> dimensions = calculateSize();
+        updateSize(dimensions.first, dimensions.second);
     }
 }
 
-void InfoManager::DrawInfo() {
+void InfoManager::drawInfo() {
     window.clear();
     for (const auto& label : labels) {
         window.draw(label);
@@ -56,7 +56,7 @@ void InfoManager::DrawInfo() {
     window.display();
 }
 
-std::pair<int, int> InfoManager::CalculateSize() {
+std::pair<int, int> InfoManager::calculateSize() {
     int width = maxWidth + 2 * TEXT_MARGIN;
     int height = labels.size() * (TEXT_MARGIN + TEXT_FONT_SIZE) + TEXT_MARGIN;
 

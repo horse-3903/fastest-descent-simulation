@@ -5,7 +5,8 @@
             "includePath": [
                 "${default}",
                 "C:/OpenGL/include",
-                "C:/SFML/include"
+                "C:/SFML/include",
+                "${workspaceFolder}"
             ],
             "defines": [
                 "_DEBUG",

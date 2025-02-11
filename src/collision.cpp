@@ -1,4 +1,4 @@
-#include "collision.h"
+#include "include/collision.h"
 
 bool rampCollision(const sf::Vector2f &circlePos, float radius, const sf::Vector2f &pointA, const sf::Vector2f &pointB) {
 	const sf::Vector2f circleCenter = circlePos + sf::Vector2f(radius, radius);

@@ -13,7 +13,7 @@ int main() {
     std::ios::sync_with_stdio(false);
 
     sf::RenderWindow sim_window(sf::VideoMode(SIM_WINDOW_WIDTH, SIM_WINDOW_HEIGHT), "Fastest Descent Simulation");
-    InfoManager iman(sf::Vector2i(10, 10), "Data Values");
+    InfoManager info_window(sf::Vector2i(10, 10), "Data Values");
 
     sf::RectangleShape startRect(sf::Vector2f(2.f, SIM_WINDOW_HEIGHT));
     startRect.setPosition(sf::Vector2f(RAMP_START_POS.x, 0));
@@ -36,18 +36,11 @@ int main() {
     ball.setPosition(BALL_START_POS);
     ball.setFillColor(sf::Color::Red);
 
-    // Load font
-    sf::Font font;
-    if (!font.loadFromFile("C:\\SFML\\arial.ttf")) {
-        std::cerr << "Error loading font!" << std::endl;
-        return -1; // Exit if font loading fails
-    }
-
     // Create and position labels for the info window
-    int globalTimeLabel = iman.AddInfo("Global Time : ");
-    int ballTimeLabel = iman.AddInfo("Ball Time : ");
-    int vxLabel = iman.AddInfo("Velocity-X : ");
-    int vyLabel = iman.AddInfo("Velocity-Y : ");
+    int globalTimeLabel = info_window.addInfo("Global Time : ");
+    int ballTimeLabel = info_window.addInfo("Ball Time : ");
+    int vxLabel = info_window.addInfo("Velocity-X : ");
+    int vyLabel = info_window.addInfo("Velocity-Y : ");
 
     // Use pointers to sf::Drawable objects
     std::vector<sf::Drawable*> simSprites = {&ramp, &ball, &startRect, &endRect};
@@ -58,12 +51,12 @@ int main() {
 
     bool ballMotion = true;
 
-    while (sim_window.isOpen() && iman.window.isOpen()) {
+    while (sim_window.isOpen() && info_window.window.isOpen()) {
         sf::Event event;
-        while (sim_window.pollEvent(event) || iman.window.pollEvent(event)) {
+        while (sim_window.pollEvent(event) || info_window.window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 sim_window.close();
-                iman.window.close();
+                info_window.window.close();
             }
         }
 
@@ -89,10 +82,10 @@ int main() {
             ballVY += GRAV_ACCEL * deltaTime;
         }
 
-        iman.UpdateInfo(globalTimeLabel, "Global Time : " + std::to_string(globalTime));
-        iman.UpdateInfo(ballTimeLabel, "Ball Motion Time : " + std::to_string(ballTime));
-        iman.UpdateInfo(vxLabel, "Velocity-X : " + std::to_string(ballVX));
-        iman.UpdateInfo(vyLabel, "Velocity-Y : " + std::to_string(ballVY));
+        info_window.updateInfo(globalTimeLabel, "Global Time : " + std::to_string(globalTime));
+        info_window.updateInfo(ballTimeLabel, "Ball Motion Time : " + std::to_string(ballTime));
+        info_window.updateInfo(vxLabel, "Velocity-X : " + std::to_string(ballVX));
+        info_window.updateInfo(vyLabel, "Velocity-Y : " + std::to_string(ballVY));
 
         // Move the ball using the calculated velocity
         ball.move(ballVX * deltaTime, ballVY * deltaTime);
@@ -105,7 +98,7 @@ int main() {
         sim_window.display();
 
         // Clear and draw the info window
-        iman.DrawInfo();
+        info_window.drawInfo();
     }
 
     return 0;

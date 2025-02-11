@@ -12,10 +12,10 @@ public:
 
     sf::RenderWindow window;
 
-    int AddInfo(std::string label);
-    void UpdateInfo(int idx, std::string label);
-    void UpdateSize(int width, int height);
-    void DrawInfo();
+    int addInfo(std::string label);
+    void updateInfo(int idx, std::string label);
+    void updateSize(int width, int height);
+    void drawInfo();
 
 private:
     sf::Font font;
@@ -26,7 +26,7 @@ private:
     int maxWidth;
     int prevMaxWidth;
 
-    std::pair<int, int> CalculateSize();
+    std::pair<int, int> calculateSize();
 };
 
 #endif
