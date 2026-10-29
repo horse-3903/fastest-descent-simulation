@@ -15,16 +15,16 @@ Interactive C++ simulation of the Brachistochrone problem with SFML-powered real
 
 ## Overview
 
-The **Brachistochrone problem** — Greek for "shortest time" — asks: what curve between two points allows a ball to descend purely under gravity in the least time? The classical answer is a **cycloid**. This project simulates a ball rolling down a configurable ramp, visualises its real-time physics (position, velocity), and uses an evolutionary algorithm to optimise the ramp angle toward the fastest descent time.
+The **Brachistochrone problem**: Greek for "shortest time", asks: what curve between two points allows a ball to descend purely under gravity in the least time? The classical answer is a **cycloid**. This project simulates a ball rolling down a configurable ramp, visualises its real-time physics (position, velocity), and uses an evolutionary algorithm to optimise the ramp angle toward the fastest descent time.
 
 ---
 
 ## Features
 
-- **Real-Time Physics Simulation** — Ball motion with gravity, velocity decomposition, and ramp collision modelled frame-by-frame
-- **Live Data Window** — Separate SFML window displaying global time, ball motion time, and velocity components updated each frame
-- **Evolutionary Optimisation** — Genetic-style optimisation searches for the ramp configuration that minimises descent time
-- **Configurable Parameters** — Ramp start/end positions, ball radius, gravitational acceleration, and window dimensions all in `constants.h`
+- **Real-Time Physics Simulation**: Ball motion with gravity, velocity decomposition, and ramp collision modelled frame-by-frame
+- **Live Data Window**: Separate SFML window displaying global time, ball motion time, and velocity components updated each frame
+- **Evolutionary Optimisation**: Genetic-style optimisation searches for the ramp configuration that minimises descent time
+- **Configurable Parameters**: Ramp start/end positions, ball radius, gravitational acceleration, and window dimensions all in `constants.h`
 
 ---
 
@@ -52,12 +52,12 @@ cd fastest-descent-simulation
 
 ### Usage
 
-**Option A — Run the pre-built batch script:**
+**Option A: Run the pre-built batch script:**
 ```cmd
 run.bat
 ```
 
-**Option B — Compile manually with SFML (static linking):**
+**Option B: Compile manually with SFML (static linking):**
 ```cmd
 C:/msys64/mingw64/bin/g++ -fdiagnostics-color=always -std=c++17 -g src/main.cpp ^
   -IC:/SFML/include -LC:/SFML/lib ^
@@ -92,7 +92,7 @@ An evolutionary algorithm iterates over candidate ramp angles:
 2. **Simulate** each configuration and record descent time
 3. **Select** configurations with shorter descent times
 4. **Mutate and recombine** to generate the next generation
-5. **Repeat** until convergence — the ramp angle approaches the Brachistochrone optimum
+5. **Repeat** until convergence: the ramp angle approaches the Brachistochrone optimum
 
 ---
 
